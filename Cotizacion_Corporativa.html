@@ -1,0 +1,430 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="Content-Language" content="es">
+    <meta http-equiv="Content-Type" content="text/html; charset=windows-1252">
+    <title>Cotización</title>
+    <style type="text/css">
+        @page {
+            margin: 12mm 10mm;
+        }
+
+        html, body {
+            width: 100%;
+            margin: 0;
+            padding: 0;
+            font-family: Arial, Helvetica, sans-serif;
+            color: #263238;
+            background: #ffffff;
+            font-size: 10pt;
+        }
+
+        .wrapper {
+            width: 96%;
+            margin: 0 auto;
+            padding: 14px 10px;
+        }
+
+        table {
+            width: 100%;
+            border-spacing: 0;
+        }
+
+        td {
+            padding: 5px 7px;
+            vertical-align: middle;
+        }
+
+        .collapse {
+            border-collapse: collapse;
+        }
+
+        .header {
+            border-bottom: 3px solid #1F5F9B;
+            padding-bottom: 10px;
+        }
+
+        .brand-cell {
+            width: 48%;
+            vertical-align: top;
+        }
+
+        .brand-name {
+            font-size: 18pt;
+            font-weight: bold;
+            color: #1F5F9B;
+            letter-spacing: .3px;
+        }
+
+        .brand-rfc {
+            margin-top: 3px;
+            font-size: 9pt;
+            color: #5F6B72;
+            font-weight: bold;
+        }
+
+        .brand-data {
+            font-size: 8.5pt;
+            line-height: 1.45;
+            color: #56636B;
+            margin-top: 5px;
+        }
+
+        .quote-box {
+            width: 36%;
+            border: 1px solid #D7DEE3;
+            border-radius: 4px;
+            overflow: hidden;
+        }
+
+        .quote-title {
+            background: #1F5F9B;
+            color: #ffffff;
+            font-size: 14pt;
+            font-weight: bold;
+            text-align: center;
+            padding: 9px 6px;
+        }
+
+        .quote-number {
+            color: #1F5F9B;
+            font-size: 13pt;
+            font-weight: bold;
+            text-align: center;
+            padding: 8px;
+            border-bottom: 1px solid #E1E6EA;
+        }
+
+        .quote-date-label {
+            color: #69757C;
+            font-size: 8pt;
+            text-align: center;
+            padding-top: 7px;
+        }
+
+        .quote-date {
+            font-weight: bold;
+            text-align: center;
+            padding-bottom: 9px;
+        }
+
+        .intro {
+            margin: 18px 0 12px 0;
+            font-size: 10pt;
+            line-height: 1.5;
+        }
+
+        .section-title {
+            background: #EEF4F8;
+            color: #1F5F9B;
+            font-size: 10.5pt;
+            font-weight: bold;
+            padding: 7px 9px;
+            border-left: 4px solid #1F5F9B;
+        }
+
+        .client-box {
+            border: 1px solid #D9E1E6;
+            border-top: 0;
+            padding: 9px 11px;
+        }
+
+        .client-name {
+            font-size: 11pt;
+            font-weight: bold;
+            color: #263238;
+        }
+
+        .client-rfc {
+            font-size: 8.5pt;
+            color: #68757D;
+            margin-top: 3px;
+        }
+
+        .detail-table {
+            margin-top: 15px;
+            border: 1px solid #D5DDE2;
+        }
+
+        .detail-table th {
+            background: #1F5F9B;
+            color: #ffffff;
+            font-size: 8.5pt;
+            font-weight: bold;
+            padding: 8px 6px;
+            text-align: center;
+            border-right: 1px solid #5D8AB3;
+        }
+
+        .detail-table td {
+            border-top: 1px solid #E1E6EA;
+            font-size: 8.8pt;
+            padding: 7px 6px;
+        }
+
+        .detail-table tr:nth-child(even) td {
+            background: #F7F9FA;
+        }
+
+        .tdCenter {
+            text-align: center;
+        }
+
+        .tdRight {
+            text-align: right;
+        }
+
+        .bold {
+            font-weight: bold;
+        }
+
+        .totals-wrap {
+            margin-top: 14px;
+        }
+
+        .amount-words {
+            width: 64%;
+            border: 1px solid #D5DDE2;
+            vertical-align: top;
+        }
+
+        .totals {
+            width: 36%;
+            border: 1px solid #D5DDE2;
+        }
+
+        .totals td {
+            border-bottom: 1px solid #E1E6EA;
+            padding: 7px 8px;
+        }
+
+        .totals-label {
+            background: #F0F4F7;
+            font-weight: bold;
+            color: #4E5B63;
+        }
+
+        .total-final td {
+            background: #1F5F9B;
+            color: #ffffff;
+            font-size: 12pt;
+            font-weight: bold;
+            border: 0;
+        }
+
+        .notes {
+            margin-top: 18px;
+            min-height: 135px;
+            border-top: 1px solid #D5DDE2;
+            padding-top: 10px;
+        }
+
+        .notes-title {
+            color: #1F5F9B;
+            font-weight: bold;
+            font-size: 10.5pt;
+        }
+
+        .notes-content {
+            margin-top: 8px;
+            font-size: 8.8pt;
+            line-height: 1.45;
+            color: #56636B;
+        }
+
+        .signatures {
+            margin-top: 12px;
+            page-break-inside: avoid;
+        }
+
+        .signature {
+            width: 48%;
+            text-align: center;
+            vertical-align: bottom;
+            padding: 12px 18px;
+        }
+
+        .signature-line {
+            border-top: 1px solid #59656C;
+            padding-top: 6px;
+            margin-top: 55px;
+        }
+
+        .signature-name {
+            font-weight: bold;
+            color: #263238;
+        }
+
+        .signature-label {
+            color: #68757D;
+            font-size: 8pt;
+        }
+
+        .footer {
+            margin-top: 18px;
+            padding-top: 8px;
+            border-top: 1px solid #D9E1E6;
+            text-align: center;
+            color: #7A858B;
+            font-size: 7.5pt;
+        }
+
+        @media print {
+            html, body {
+                font-size: 9pt;
+            }
+
+            .wrapper {
+                width: 97%;
+                padding: 4px;
+            }
+
+            .detail-table th,
+            .detail-table td {
+                font-size: 8pt;
+            }
+        }
+    </style>
+</head>
+
+<body>
+<div class="wrapper">
+
+    <!-- ENCABEZADO CORPORATIVO -->
+    <table class="header">
+        <tr>
+            <td class="brand-cell">
+                <div class="brand-name">[EmisorNombre]</div>
+                <div class="brand-rfc">RFC: [EmisorRfc]</div>
+                <div class="brand-data">
+                    [EmisorRegimenFiscal]<br>
+                    [EmisorDomicilioFiscalCalle]
+                    [EmisorDomicilioFiscalNoExterior],
+                    [EmisorDomicilioFiscalNoInterior],
+                    [EmisorDomicilioFiscalColonia]<br>
+                    C.P. [EmisorDomicilioFiscalCodigoPostal],
+                    [EmisorDomicilioFiscalMunicipio],
+                    [EmisorDomicilioFiscalEstado],
+                    [EmisorDomicilioFiscalPais]<br>
+                    Tel. [EmisorTelefono] &nbsp; | &nbsp; [EmisorEmail]
+                </div>
+            </td>
+
+            <td style="width:16%; text-align:center;">
+                <!-- Si se requiere logotipo, puede colocarse aquí -->
+                &nbsp;
+            </td>
+
+            <td class="quote-box">
+                <div class="quote-title">COTIZACIÓN</div>
+                <div class="quote-number">[Serie][Folio]</div>
+                <div class="quote-date-label">Fecha de elaboración</div>
+                <div class="quote-date">[FechaDocumento]</div>
+            </td>
+        </tr>
+    </table>
+
+    <div class="intro">
+        En atención a su solicitud, tengo el gusto de presentar a su amable
+        consideración el presupuesto correspondiente:
+    </div>
+
+    <!-- CLIENTE -->
+    <table class="collapse">
+        <tr>
+            <td class="section-title">DATOS DEL CLIENTE</td>
+        </tr>
+        <tr>
+            <td class="client-box">
+                <div class="client-name">[ReceptorNombre]</div>
+                <div class="client-rfc">RFC: [ReceptorRfc]</div>
+            </td>
+        </tr>
+    </table>
+
+    <!-- DETALLE -->
+    <table class="detail-table collapse">
+        <tr>
+            <th style="width:12%;">Clave</th>
+            <th style="width:9%;">Cantidad</th>
+            <th style="width:12%;">Unidad</th>
+            <th>Descripción</th>
+            <th style="width:14%;">Precio</th>
+            <th style="width:15%;">Importe</th>
+        </tr>
+
+        <DETAIL>
+        <tr>
+            <td class="tdCenter">[NumeroIdentificacion]</td>
+            <td class="tdRight">[Cantidad]</td>
+            <td class="tdCenter">[UnidadDeMedida]</td>
+            <td>[Descripcion]</td>
+            <td class="tdRight">$[Format(ValorUnitario,#,##0.00)]</td>
+            <td class="tdRight bold">$[Format(Importe,#,##0.00)]</td>
+        </tr>
+        </DETAIL>
+    </table>
+
+    <!-- TOTALES -->
+    <table class="totals-wrap collapse">
+        <tr>
+            <td class="amount-words">
+                <div class="section-title">IMPORTE EN LETRA</div>
+                <div style="padding:10px 11px; line-height:1.4;">
+                    [CantidadConLetra]
+                </div>
+            </td>
+
+            <td class="totals">
+                <table class="collapse">
+                    <tr>
+                        <td class="totals-label">Subtotal</td>
+                        <td class="tdRight">$[Format(Subtotal,#,##0.00)]</td>
+                    </tr>
+                    <tr>
+                        <td class="totals-label">(+) IVA %16</td>
+                        <td class="tdRight">$[Format(TotalImpuestosTrasladados,#,##0.00)]</td>
+                    </tr>
+                    <tr class="total-final">
+                        <td>TOTAL</td>
+                        <td class="tdRight">$[Format(Total,#,##0.00)]</td>
+                    </tr>
+                </table>
+            </td>
+        </tr>
+    </table>
+
+    <!-- OBSERVACIONES -->
+    <div class="notes">
+        <div class="notes-title">TÉRMINOS Y OBSERVACIONES</div>
+        <div class="notes-content">
+            [Comments]
+        </div>
+    </div>
+
+    <!-- FIRMAS -->
+    <table class="signatures">
+        <tr>
+            <td class="signature">
+                <div class="signature-line">
+                    <div class="signature-name">[NombreVendedorDocumento]</div>
+                    <div class="signature-label">Firma del vendedor</div>
+                </div>
+            </td>
+
+            <td class="signature">
+                <div class="signature-line">
+                    <div class="signature-name">[ReceptorNombre]</div>
+                    <div class="signature-label">Firma de autorización</div>
+                </div>
+            </td>
+        </tr>
+    </table>
+
+    <div class="footer">
+        Documento generado electrónicamente &nbsp;|&nbsp; [EmisorNombre]
+    </div>
+
+</div>
+</body>
+</html>
