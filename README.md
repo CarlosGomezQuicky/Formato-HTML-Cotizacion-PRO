@@ -1,6 +1,4 @@
 # Formato-HTML-Cotizacion-PRO
-Repositorio de practica con el  fin de compartir conocimiento y practica para 
-# Formato HTML Cotización PRO
 
 Plantilla HTML para la generación y presentación de cotizaciones de CONTPAQi Comercial PRO.
 
